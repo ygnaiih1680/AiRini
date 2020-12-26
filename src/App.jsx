@@ -1,15 +1,18 @@
-import React, {Component, lazy} from 'react'
-import BrowserRouter, {Switch, Route} from 'react-router'
+import React, {Component, lazy, Suspense} from 'react'
+import {BrowserRouter} from "react-router-dom";
+import {Route, Switch} from 'react-router'
 
-const Main = lazy(() => import("Main"))
+const Main = lazy(() => import("./Main"))
 
 class App extends Component {
     render() {
-        return(
+        return (
             <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact render={Main}/>
-                </Switch>
+                <Suspense fallback={() => null}>
+                    <Switch>
+                        <Route path="/" exact render={() => <Main/>}/>
+                    </Switch>
+                </Suspense>
             </BrowserRouter>
         )
     }
