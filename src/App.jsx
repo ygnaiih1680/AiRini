@@ -2,7 +2,7 @@ import React, {Component, lazy, Suspense} from 'react'
 import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from 'react-router'
 
-const Main = lazy(() => import("./Main"))
+const Main = lazy(() => import("./component/Main"))
 
 class App extends Component {
     render() {
@@ -10,7 +10,7 @@ class App extends Component {
             <BrowserRouter>
                 <Suspense fallback={() => null}>
                     <Switch>
-                        <Route path="/" exact render={() => <Main/>}/>
+                        <Route path="/" exact name="Main" render={() => <Main/>}/>
                     </Switch>
                 </Suspense>
             </BrowserRouter>
