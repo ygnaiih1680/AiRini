@@ -12,7 +12,9 @@ class SearchEngine extends Component {
         this.state = {
             text: "",
             cursor: {
-                pos: 1
+                pos: 1,
+                on: false,
+                id: null
             }
         }
     }
@@ -20,6 +22,7 @@ class SearchEngine extends Component {
     componentDidMount() {
         const {length} = this.initialMessage
         const backEndEngine = document.querySelector("#back-end-engine")
+        // backEndEngine.focus()
         let idx = 0
         if (this.initialMessage.length !== 0) {
             const intervalID = setInterval(() => {
@@ -39,7 +42,14 @@ class SearchEngine extends Component {
         const {target: {selectionStart}} = evt
         const {text: {length}} = this.state
         const newState = {...this.state}
+        const cursor = document.querySelector("#cursor")
+        cursor.classList.add("on")
+        clearInterval(this.state.cursor.id)
+        const intervalId = setInterval(() => {
+            cursor.classList.toggle("on")
+        }, 500)
         newState.cursor.pos = selectionStart - length / 2 + 1
+        newState.cursor.id = intervalId
         this.setState(newState)
     }
 
@@ -51,16 +61,41 @@ class SearchEngine extends Component {
         this.setState(newState)
     }
 
+    cursorOn() {
+        const cursor = document.querySelector("#cursor")
+        cursor.classList.add("on")
+        const intervalId = setInterval(() => {
+            cursor.classList.toggle("on")
+        }, 500)
+        const newState = {...this.state}
+        newState.cursor.on = true
+        newState.cursor.id = intervalId
+        this.setState(newState)
+    }
+
+    cursorOff() {
+        const cursor = document.querySelector("#cursor")
+        cursor.classList.remove("on")
+        clearInterval(this.state.cursor.id)
+        const newState = {...this.state}
+        newState.cursor.on = false
+        newState.cursor.id = null
+        this.setState(newState)
+    }
+
     render() {
         return (
             <div id="search-engine">
                 <div id="icon-block"><FontAwesomeIcon icon={faSearch} color="#615F5F" size="2x"/></div>
                 <div id="search-block">
                     <span id="search-text">{this.state.text}</span>
-                    <input type="search" id="back-end-engine" className="hidden" onKeyUp={this.moveCursor.bind(this)} onInput={this.inputText.bind(this)}
+                    <input type="search" id="back-end-engine" className="hidden"
+                           onKeyUp={this.moveCursor.bind(this)}
+                           onInput={this.inputText.bind(this)}
+                           onFocus={this.cursorOn.bind(this)}
+                           onBlur={this.cursorOff.bind(this)}
                            autoComplete="off"/>
-                    <span id="cursor" className={"on"}
-                          style={{left: `calc(3.08ch * ${this.state.cursor.pos} - 1.05ch)`}}/>
+                    <span id="cursor" style={{left: `calc(3.08ch * ${this.state.cursor.pos} - 1.05ch)`}}/>
                 </div>
             </div>
         )
