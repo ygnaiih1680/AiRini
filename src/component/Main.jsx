@@ -6,7 +6,7 @@ class Main extends Component {
     render() {
         return(
             <div id="main">
-                <SearchEngine message={`AiRini's Portfolio`}/>
+                <SearchEngine message={`WEB Developer AiRini`}/>
             </div>
         )
     }

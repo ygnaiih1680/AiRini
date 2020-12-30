@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,700&family=Noto+Sans+KR:wght@300;400;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,800&family=Noto+Sans+KR:wght@300;400;700&family=Share+Tech+Mono&family=Major+Mono+Display&display=swap');
 
 * {
-    font-family: 'Share Tech Mono', sans-serif;
+    font-family: 'JetBrains Mono', sans-serif;
 }
 
 body {
