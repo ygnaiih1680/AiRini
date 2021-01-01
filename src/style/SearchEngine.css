@@ -40,12 +40,12 @@
     padding: 0;
     text-align: center;
     cursor: text;
-    font-family: "Major Mono Display", "Noto Sans KR", monospace;
+    font-family: "JetBrains Mono", monospace;
     font-style: italic;
     font-weight: 800;
     font-size: 2.5rem;
     color: var(--color-cloud-dancer);
-    -webkit-text-stroke: .1rem var(--color-granite-gray);
+    -webkit-text-stroke: .05rem var(--color-granite-gray);
     overflow: auto;
     white-space: pre;
     -ms-overflow-style: none;
@@ -57,13 +57,13 @@
 
 #cursor {
     position: relative;
-    top: 2.75ex;
+    top: 2.9ex;
     display: inline-block;
     background-color: transparent;
     font-size: inherit;
-    width: 3ch;
+    width: 2.3ch;
     height: 0.2rem;
-    transform: skewX(-14deg);
+    transform: skewX(-12deg);
 }
 
 #cursor.on {

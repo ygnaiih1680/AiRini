@@ -91,11 +91,12 @@ class SearchEngine extends Component {
                     <span id="search-text">{this.state.text}</span>
                     <input type="search" id="back-end-engine" className="hidden"
                            onKeyUp={this.moveCursor.bind(this)}
+                           onClick={this.moveCursor.bind(this)}
                            onInput={this.inputText.bind(this)}
                            onFocus={this.cursorOn.bind(this)}
                            onBlur={this.cursorOff.bind(this)}
                            autoComplete="off"/>
-                    <span id="cursor" style={{left: `calc(3.08ch * ${this.state.cursor.pos} - 1.05ch)`}}/>
+                    <span id="cursor" style={{left: `${2.5 * this.state.cursor.pos - 0.9}ch`}}/>
                 </div>
             </div>
         )
