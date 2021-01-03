@@ -42,7 +42,7 @@ class SearchEngine extends Component {
         const {target: {selectionStart}} = evt
         const {text: {length}} = this.state
         const newState = {...this.state}
-        const cursor = document.querySelector("#cursor")
+        const cursor = document.querySelector("#caret")
         cursor.classList.add("on")
         clearInterval(this.state.cursor.id)
         const intervalId = setInterval(() => {
@@ -62,7 +62,7 @@ class SearchEngine extends Component {
     }
 
     cursorOn() {
-        const cursor = document.querySelector("#cursor")
+        const cursor = document.querySelector("#caret")
         cursor.classList.add("on")
         const intervalId = setInterval(() => {
             cursor.classList.toggle("on")
@@ -74,7 +74,7 @@ class SearchEngine extends Component {
     }
 
     cursorOff() {
-        const cursor = document.querySelector("#cursor")
+        const cursor = document.querySelector("#caret")
         cursor.classList.remove("on")
         clearInterval(this.state.cursor.id)
         const newState = {...this.state}
@@ -84,6 +84,7 @@ class SearchEngine extends Component {
     }
 
     render() {
+        //TODO: Add drag action, text overflow
         return (
             <div id="search-engine">
                 <div id="icon-block"><FontAwesomeIcon icon={faSearch} color="#615F5F" size="2x"/></div>
@@ -96,7 +97,7 @@ class SearchEngine extends Component {
                            onFocus={this.cursorOn.bind(this)}
                            onBlur={this.cursorOff.bind(this)}
                            autoComplete="off"/>
-                    <span id="cursor" style={{left: `${2.5 * this.state.cursor.pos - 0.9}ch`}}/>
+                    <span id="caret" style={{left: `${2.5 * this.state.cursor.pos - 0.9}ch`}}/>
                 </div>
             </div>
         )

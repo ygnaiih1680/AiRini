@@ -4,9 +4,11 @@ import "../style/Main.css"
 
 class Main extends Component {
     render() {
-        return(
+        return (
             <div id="main">
-                <SearchEngine message={`WEB Developer AiRini`}/>
+                <div style={{width: "75%", position: "relative"}}>
+                    <SearchEngine message="WEB Developer AiRini"/>
+                </div>
             </div>
         )
     }
