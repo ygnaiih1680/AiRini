@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,800&family=Noto+Sans+KR:wght@300;400;700&family=Share+Tech+Mono&family=Major+Mono+Display&display=swap');
 @import "Color.css";
+@import "~d2coding/d2coding-ligature-full.css";
 
 * {
-    font-family: 'JetBrains Mono', sans-serif;
+    font-family: 'D2Coding', sans-serif;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 2vh;
-    background-color: var(--color-cloud-dancer);
+    background-color: var(--color-blue-nights);
 }
 
 code {

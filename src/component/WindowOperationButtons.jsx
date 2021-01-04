@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faWindowMinimize, faWindowMaximize, faWindowClose} from "@fortawesome/free-regular-svg-icons"
 import "../style/WindowOperationButton.css"
+import color from "../color.json"
 
 const buttons = {
     minimize: faWindowMinimize,
@@ -11,7 +12,7 @@ const buttons = {
 
 const OperationButton = ({type, icon}) => (
     <div id={type} className="operation">
-        <FontAwesomeIcon icon={icon} color="#615F5F" size="sm"/>
+        <FontAwesomeIcon icon={icon} color={color.illuminating} size="sm"/>
     </div>
 )
 

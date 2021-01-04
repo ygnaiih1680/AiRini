@@ -11,8 +11,8 @@
     left: .5rem;
     height: 5rem;
     width: calc(100% - .4rem);
-    background-color: var(--color-rose-quartz);
-    border: .2rem solid var(--color-granite-gray);
+    background-color: transparent;
+    border: .2rem solid var(--color-illuminating);
     z-index: -1;
 }
 
@@ -22,11 +22,11 @@
     justify-content: center;
     align-items: center;
     height: 5rem;
-    background-color: var(--color-serenity);
-    border-top: .2rem solid var(--color-granite-gray);
-    border-left: .2rem solid var(--color-granite-gray);
-    border-bottom: .2rem solid var(--color-granite-gray);
-    border-right: .1rem solid var(--color-granite-gray);
+    background-color: var(--color-blue-nights);
+    border-top: .2rem solid var(--color-chrome);
+    border-left: .2rem solid var(--color-chrome);
+    border-bottom: .2rem solid var(--color-chrome);
+    border-right: .1rem solid var(--color-chrome);
 }
 
 #search-block {
@@ -34,32 +34,38 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    border-top: .2rem solid var(--color-granite-gray);
-    border-left: .1rem solid var(--color-granite-gray);
-    border-bottom: .2rem solid var(--color-granite-gray);
-    border-right: .2rem solid var(--color-granite-gray);
+    background-color: var(--color-blue-nights);
+    border-top: .2rem solid var(--color-chrome);
+    border-left: .1rem solid var(--color-chrome);
+    border-bottom: .2rem solid var(--color-chrome);
+    border-right: .2rem solid var(--color-chrome);
 }
 
-#search-text, #back-end-engine {
+#back-end-engine {
     position: absolute;
     border: none;
     margin: 0 8px;
     padding: 0 2.5ch;
     text-align: center;
     cursor: text;
-    font-family: "JetBrains Mono", monospace;
-    font-style: italic;
-    font-weight: 800;
+    font-weight: bold;
     font-size: 2.5rem;
-    color: var(--color-cloud-dancer);
-    -webkit-text-stroke: .05rem var(--color-granite-gray);
+    color: var(--color-prism-pink);
+    background-color: transparent;
+    caret-color: var(--color-illuminating);
     overflow: auto;
-    white-space: pre;
+    white-space: nowrap;
     -ms-overflow-style: none;
 }
 
-#search-block > #search-text::-webkit-scrollbar {
+#back-end-engine:focus {
+    outline: none;
+}
+
+#back-end-engine::-webkit-search-decoration,
+#back-end-engine::-webkit-search-cancel-button,
+#back-end-engine::-webkit-search-results-button,
+#back-end-engine::-webkit-search-results-decoration {
     display: none;
 }
 
@@ -71,10 +77,9 @@
     font-size: inherit;
     width: 2.5ch;
     height: 0.2rem;
-    transform: skewX(-12deg);
 }
 
 #caret.on {
-    background-color: var(--color-granite-gray);
+    background-color: var(--color-illuminating);
 }
 

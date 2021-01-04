@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSearch} from "@fortawesome/free-solid-svg-icons"
 import '../style/SearchEngine.css'
+import {placidBlue} from "../color.json"
 
 class SearchEngine extends Component {
     initialMessage
@@ -84,21 +85,21 @@ class SearchEngine extends Component {
 
     render() {
         //TODO: Add drag action, text overflow
+        /* TODO: 2021/01/05 change caret */
         return (
             <div id="search-engine">
                 <div id="shadow"/>
                 <div style={{width: "100%", display: "grid", gridTemplateColumns: "6rem 1fr"}}>
-                    <div id="icon-block"><FontAwesomeIcon icon={faSearch} color="#615F5F" size="2x"/></div>
+                    <div id="icon-block"><FontAwesomeIcon icon={faSearch} color={placidBlue} size="2x"/></div>
                     <div id="search-block">
-                        <span id="search-text">{this.state.text}</span>
-                        <input type="search" id="back-end-engine" className="hidden"
+                        <input type="search" id="back-end-engine"
                                onKeyUp={this.moveCursor.bind(this)}
                                onClick={this.moveCursor.bind(this)}
                                onInput={this.inputText.bind(this)}
                                onFocus={this.cursorOn.bind(this)}
                                onBlur={this.cursorOff.bind(this)}
-                               autoComplete="off"/>
-                        <span id="caret" style={{left: `${2.45 * this.state.cursor.pos - 0.9}ch`}}/>
+                               autoComplete="off" spellCheck={false}/>
+                        <span id="caret" style={{left: `${2.425 * this.state.cursor.pos - .5}ch`}}/>
                     </div>
                 </div>
             </div>
