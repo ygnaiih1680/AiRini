@@ -6,10 +6,6 @@
     align-items: flex-end;
 }
 
-#minimize {
-
-}
-
 .operation {
     width: 1.5rem;
     height: 1.5rem;
@@ -18,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: .5rem;
+    margin-bottom: 1rem;
 }
 
 .operation:nth-of-type(1) {
@@ -27,7 +23,8 @@
 }
 
 .operation:nth-of-type(2) {
-    margin: .5rem .25rem;
+    margin-left: .25rem;
+    margin-right: .25rem;
 }
 
 .operation:nth-of-type(3) {

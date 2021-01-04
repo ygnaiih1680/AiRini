@@ -22,7 +22,6 @@ class SearchEngine extends Component {
     componentDidMount() {
         const {length} = this.initialMessage
         const backEndEngine = document.querySelector("#back-end-engine")
-        // backEndEngine.focus()
         let idx = 0
         if (this.initialMessage.length !== 0) {
             const intervalID = setInterval(() => {
@@ -87,17 +86,20 @@ class SearchEngine extends Component {
         //TODO: Add drag action, text overflow
         return (
             <div id="search-engine">
-                <div id="icon-block"><FontAwesomeIcon icon={faSearch} color="#615F5F" size="2x"/></div>
-                <div id="search-block">
-                    <span id="search-text">{this.state.text}</span>
-                    <input type="search" id="back-end-engine" className="hidden"
-                           onKeyUp={this.moveCursor.bind(this)}
-                           onClick={this.moveCursor.bind(this)}
-                           onInput={this.inputText.bind(this)}
-                           onFocus={this.cursorOn.bind(this)}
-                           onBlur={this.cursorOff.bind(this)}
-                           autoComplete="off"/>
-                    <span id="caret" style={{left: `${2.5 * this.state.cursor.pos - 0.9}ch`}}/>
+                <div id="shadow"/>
+                <div style={{width: "100%", display: "grid", gridTemplateColumns: "6rem 1fr"}}>
+                    <div id="icon-block"><FontAwesomeIcon icon={faSearch} color="#615F5F" size="2x"/></div>
+                    <div id="search-block">
+                        <span id="search-text">{this.state.text}</span>
+                        <input type="search" id="back-end-engine" className="hidden"
+                               onKeyUp={this.moveCursor.bind(this)}
+                               onClick={this.moveCursor.bind(this)}
+                               onInput={this.inputText.bind(this)}
+                               onFocus={this.cursorOn.bind(this)}
+                               onBlur={this.cursorOff.bind(this)}
+                               autoComplete="off"/>
+                        <span id="caret" style={{left: `${2.45 * this.state.cursor.pos - 0.9}ch`}}/>
+                    </div>
                 </div>
             </div>
         )

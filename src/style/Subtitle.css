@@ -1,0 +1,14 @@
+@import "../Color.css";
+
+#subtitle {
+    background-color: white;
+    margin-top: 1.5rem;
+    margin-left: .5rem;
+    width: 12rem;
+    border: .2rem solid var(--color-granite-gray);
+    text-align: center;
+    font-family: "Noto Sans Kr", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-granite-gray);
+}
