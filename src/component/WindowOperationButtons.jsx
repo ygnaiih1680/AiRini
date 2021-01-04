@@ -20,8 +20,8 @@ class WindowOperationButtons extends Component {
         return (
             <div id="window-operation-button">
                 {
-                    Object.entries(buttons).map(([type, icon]) => (
-                        <OperationButton type={type} icon={icon}/>
+                    Object.entries(buttons).map(([type, icon], idx) => (
+                        <OperationButton key={idx} type={type} icon={icon}/>
                     ))
                 }
             </div>

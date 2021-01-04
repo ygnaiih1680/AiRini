@@ -7,9 +7,9 @@
 
 #shadow {
     position: absolute;
-    top: 5rem;
+    top: 6rem;
     left: .5rem;
-    height: 4rem;
+    height: 5rem;
     width: calc(100% - .4rem);
     background-color: var(--color-rose-quartz);
     border: .2rem solid var(--color-granite-gray);
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 4rem;
+    height: 5rem;
     background-color: var(--color-serenity);
     border-top: .2rem solid var(--color-granite-gray);
     border-left: .2rem solid var(--color-granite-gray);
