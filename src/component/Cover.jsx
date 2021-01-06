@@ -9,7 +9,7 @@ class Cover extends Component {
         return (
             <div id="cover">
                 <WindowOperationButtons/>
-                <SearchEngine message="WEB Developer AiRini"/>
+                <SearchEngine placeholder="WEB Developer AiRini"/>
                 <Subtitle/>
             </div>
         )

@@ -9,12 +9,11 @@
 .operation {
     width: 1.5rem;
     height: 1.5rem;
-    border: .2rem solid var(--color-chrome);
     background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .operation:nth-of-type(1) {

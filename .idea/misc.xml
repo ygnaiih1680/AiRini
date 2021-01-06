@@ -3,7 +3,7 @@
   <component name="ProjectResources">
     <resource url="https://fonts.googleapis.com" location="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" default="false">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

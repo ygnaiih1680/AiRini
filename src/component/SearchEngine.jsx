@@ -1,17 +1,14 @@
 import React, {Component} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faSearch} from "@fortawesome/free-solid-svg-icons"
+import {faTerminal} from "@fortawesome/free-solid-svg-icons"
 import '../style/SearchEngine.css'
 import {placidBlue} from "../color.json"
 
 class SearchEngine extends Component {
-    initialMessage
-
     constructor(props) {
         super(props)
-        this.initialMessage = props.message
         this.state = {
-            text: "",
+            text: props.placeholder,
             cursor: {
                 pos: 1,
                 on: false,
@@ -21,21 +18,19 @@ class SearchEngine extends Component {
     }
 
     componentDidMount() {
-        const {length} = this.initialMessage
-        const backEndEngine = document.querySelector("#back-end-engine")
+        const searchText = document.querySelector("#search-text")
         let idx = 0
-        if (this.initialMessage.length !== 0) {
-            const intervalID = setInterval(() => {
-                const {text} = this.state
-                const newText = text + this.initialMessage[idx++]
-                const newState = {...this.state}
-                backEndEngine.value = newText
-                newState.cursor.pos = idx / 2 + 1
-                newState.text = newText
-                this.setState(newState)
-                if (idx === length) clearInterval(intervalID)
-            }, 150)
-        }
+        const {text} = this.state
+        const {length} = this.state.text
+        const intervalID = setInterval(() => {
+            const {value} = searchText
+            const newText = value + text[idx++]
+            const newState = {...this.state}
+            searchText.value = newText
+            newState.cursor.pos = idx / 2 + 1
+            this.setState(newState)
+            if (idx === length) clearInterval(intervalID)
+        }, 100)
     }
 
     moveCursor(evt) {
@@ -61,7 +56,7 @@ class SearchEngine extends Component {
         this.setState(newState)
     }
 
-    cursorOn() {
+    caretOn() {
         const cursor = document.querySelector("#caret")
         cursor.classList.add("on")
         const intervalId = setInterval(() => {
@@ -73,7 +68,7 @@ class SearchEngine extends Component {
         this.setState(newState)
     }
 
-    cursorOff() {
+    caretOff() {
         const cursor = document.querySelector("#caret")
         cursor.classList.remove("on")
         clearInterval(this.state.cursor.id)
@@ -90,16 +85,16 @@ class SearchEngine extends Component {
             <div id="search-engine">
                 <div id="shadow"/>
                 <div style={{width: "100%", display: "grid", gridTemplateColumns: "6rem 1fr"}}>
-                    <div id="icon-block"><FontAwesomeIcon icon={faSearch} color={placidBlue} size="2x"/></div>
+                    <div id="icon-block"><FontAwesomeIcon icon={faTerminal} color={placidBlue} size="2x"/></div>
                     <div id="search-block">
-                        <input type="search" id="back-end-engine"
+                        <input type="search" id="search-text"
                                onKeyUp={this.moveCursor.bind(this)}
                                onClick={this.moveCursor.bind(this)}
                                onInput={this.inputText.bind(this)}
-                               onFocus={this.cursorOn.bind(this)}
-                               onBlur={this.cursorOff.bind(this)}
+                               onFocus={this.caretOn.bind(this)}
+                               onBlur={this.caretOff.bind(this)}
                                autoComplete="off" spellCheck={false}/>
-                        <span id="caret" style={{left: `${2.425 * this.state.cursor.pos - .5}ch`}}/>
+                        <span id="caret"/>
                     </div>
                 </div>
             </div>

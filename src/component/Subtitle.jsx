@@ -4,7 +4,7 @@ import "../style/Subtitle.css"
 const Subtitle = () => (
     <div style={{display: "flex", alignItems: "flex-start"}}>
         <div id="subtitle">
-            웹 개발자 박성제
+            <span className="low-emphasis">made by</span>&nbsp;박성제
         </div>
     </div>
 )

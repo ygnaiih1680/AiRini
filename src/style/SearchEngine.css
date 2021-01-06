@@ -3,14 +3,16 @@
 #search-engine {
     display: flex;
     width: 100%;
+    transition: all 1s linear;
 }
 
 #shadow {
     position: absolute;
-    top: 6rem;
-    left: .5rem;
+    top: 5.8rem;
+    left: .4rem;
     height: 5rem;
     width: calc(100% - .4rem);
+    /*background-color: var(--color-chrome);*/
     background-color: transparent;
     border: .2rem solid var(--color-illuminating);
     z-index: -1;
@@ -23,10 +25,8 @@
     align-items: center;
     height: 5rem;
     background-color: var(--color-blue-nights);
-    border-top: .2rem solid var(--color-chrome);
-    border-left: .2rem solid var(--color-chrome);
-    border-bottom: .2rem solid var(--color-chrome);
-    border-right: .1rem solid var(--color-chrome);
+    border: .2rem solid var(--color-chrome);
+    border-right: none;
 }
 
 #search-block {
@@ -35,21 +35,20 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-blue-nights);
-    border-top: .2rem solid var(--color-chrome);
-    border-left: .1rem solid var(--color-chrome);
-    border-bottom: .2rem solid var(--color-chrome);
-    border-right: .2rem solid var(--color-chrome);
+    font-family: "JetBrains Mono", "D2Coding", monospace;
+    border: .2rem solid var(--color-chrome);
+    border-left: none;
+    font-size: 2.5rem;
 }
 
-#back-end-engine {
-    position: absolute;
+#search-text {
+    order: 1;
+    flex-grow: 1;
+    position: relative;
     border: none;
-    margin: 0 8px;
-    padding: 0 2.5ch;
+    margin-right: 1ch;
     text-align: center;
-    cursor: text;
-    font-weight: bold;
-    font-size: 2.5rem;
+    font: bold 2.5rem "JetBrains Mono", "D2Coding", monospace;
     color: var(--color-prism-pink);
     background-color: transparent;
     caret-color: var(--color-illuminating);
@@ -58,24 +57,26 @@
     -ms-overflow-style: none;
 }
 
-#back-end-engine:focus {
+#search-text:focus {
     outline: none;
 }
 
-#back-end-engine::-webkit-search-decoration,
-#back-end-engine::-webkit-search-cancel-button,
-#back-end-engine::-webkit-search-results-button,
-#back-end-engine::-webkit-search-results-decoration {
+#search-text::-webkit-search-decoration,
+#search-text::-webkit-search-cancel-button,
+#search-text::-webkit-search-results-button,
+#search-text::-webkit-search-results-decoration {
     display: none;
 }
 
 #caret {
+    order: 0;
+    top: 1.5ex;
     position: relative;
-    top: 2.9ex;
+    left: 500px;
     display: inline-block;
     background-color: transparent;
     font-size: inherit;
-    width: 2.5ch;
+    width: 1ch;
     height: 0.2rem;
 }
 

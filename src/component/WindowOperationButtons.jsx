@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faWindowMinimize, faWindowMaximize, faWindowClose} from "@fortawesome/free-regular-svg-icons"
+import {faWindowClose, faWindowMaximize, faWindowMinimize} from "@fortawesome/free-regular-svg-icons"
 import "../style/WindowOperationButton.css"
-import color from "../color.json"
+import {placidBlue} from "../color.json"
+import {Link} from "react-router-dom";
 
 const buttons = {
     minimize: faWindowMinimize,
@@ -11,9 +12,9 @@ const buttons = {
 }
 
 const OperationButton = ({type, icon}) => (
-    <div id={type} className="operation">
-        <FontAwesomeIcon icon={icon} color={color.illuminating} size="sm"/>
-    </div>
+    <Link to="/content" id={type} className="operation">
+        <FontAwesomeIcon icon={icon} color={placidBlue} size="sm"/>
+    </Link>
 )
 
 class WindowOperationButtons extends Component {
