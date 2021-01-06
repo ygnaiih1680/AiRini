@@ -5,7 +5,9 @@ const Cover = lazy(() => import("./component/Cover"))
 class App extends Component {
     render() {
         return (
-            <Cover/>
+            <Suspense fallback={() => null}>
+                <Cover/>
+            </Suspense>
         )
     }
 }

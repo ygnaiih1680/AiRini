@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faWindowClose, faWindowMaximize, faWindowMinimize} from "@fortawesome/free-regular-svg-icons"
+import {faWindowClose, faWindowMaximize, faWindowMinimize, IconDefinition} from "@fortawesome/free-regular-svg-icons"
 import "../style/WindowOperationButton.css"
 import {placidBlue} from "../color.json"
-import {Link} from "react-router-dom";
 
 const buttons = {
     minimize: faWindowMinimize,
@@ -11,10 +10,15 @@ const buttons = {
     close: faWindowClose
 }
 
-const OperationButton = ({type, icon}) => (
-    <Link to="/content" id={type} className="operation">
+type ButtonProperties = {
+    type: string,
+    icon: IconDefinition
+}
+
+const OperationButton = ({type, icon}: ButtonProperties) => (
+    <div id={type} className="operation">
         <FontAwesomeIcon icon={icon} color={placidBlue} size="sm"/>
-    </Link>
+    </div>
 )
 
 class WindowOperationButtons extends Component {
