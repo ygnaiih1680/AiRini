@@ -19,6 +19,8 @@ interface Props {
     placeholder: string
 }
 
+const {setInterval, clearInterval} = window
+
 class SearchEngineImpl extends Component<Props, SearchEngine> {
     constructor(props: Props) {
         super(props)
@@ -53,15 +55,15 @@ class SearchEngineImpl extends Component<Props, SearchEngine> {
         }, 100)
     }
 
-    moveCursor(evt: KeyboardEvent | MouseEvent) {
-        const {selectionStart} = evt.target as HTMLInputElement,
+    moveCursor(evt: KeyboardEvent<HTMLInputElement> | MouseEvent<HTMLInputElement>) {
+        const {currentTarget: {selectionStart}} = evt,
             {text: {length}} = this.state,
             newState = {...this.state},
             cursor = document.querySelector("#caret")
         if (cursor && selectionStart) {
             cursor.classList.add("on")
             clearInterval(this.state.cursor.id)
-            const intervalId = window.setInterval(() => {
+            const intervalId = setInterval(() => {
                 cursor.classList.toggle("on")
             }, 500)
             newState.cursor.pos = selectionStart - length / 2 + 1
@@ -71,7 +73,7 @@ class SearchEngineImpl extends Component<Props, SearchEngine> {
     }
 
     inputText(evt: FormEvent<HTMLInputElement>) {
-        const {value, selectionStart} = evt.target as HTMLInputElement,
+        const {currentTarget: {value, selectionStart}} = evt,
             newState = {...this.state}
         if (selectionStart) {
             newState.cursor.pos = selectionStart - value.length / 2 + 1
@@ -84,7 +86,7 @@ class SearchEngineImpl extends Component<Props, SearchEngine> {
         const cursor = document.querySelector("#caret")
         if (cursor) {
             cursor.classList.add("on")
-            const intervalId = window.setInterval(() => {
+            const intervalId = setInterval(() => {
                 cursor.classList.toggle("on")
             }, 500)
             const newState = {...this.state}

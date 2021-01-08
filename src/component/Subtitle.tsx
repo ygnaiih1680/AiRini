@@ -1,4 +1,4 @@
-import React from 'react'
+œimport React from 'react'
 import "../style/Subtitle.css"
 
 const Subtitle = () => (
