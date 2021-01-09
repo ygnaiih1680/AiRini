@@ -1,0 +1,12 @@
+#main.cover {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    width: 75%;
+    position: relative;
+}
+
+#main.top {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    position: relative;
+}

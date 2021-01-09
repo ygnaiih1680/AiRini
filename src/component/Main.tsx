@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import WindowOperationButtons from "./WindowOperationButtons"
 import SearchEngine from "./SearchEngine"
 import Subtitle from "./Subtitle"
-import "../style/Cover.css"
+import "../style/Main.css"
 
-class Cover extends Component {
+class Main extends Component {
     render() {
         return (
-            <div id="cover">
+            <div id="main" className="cover">
                 <WindowOperationButtons/>
                 <SearchEngine placeholder="WEB Developer AiRini"/>
                 <Subtitle/>
@@ -16,4 +16,4 @@ class Cover extends Component {
     }
 }
 
-export default Cover
+export default Main
