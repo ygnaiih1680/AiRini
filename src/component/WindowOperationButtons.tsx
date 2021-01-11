@@ -10,8 +10,8 @@ const buttons = {
     close: faWindowClose
 }
 
-type ButtonProperties = {
-    type: string,
+interface ButtonProperties {
+    type: string
     icon: IconDefinition
 }
 
