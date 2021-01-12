@@ -1,23 +1,22 @@
-const COVER = "viewMode/COVER" as const
-const CONTENT = "viewMode/CONTENT" as const
+export const COVER = "viewMode/COVER" as const
+export const CONTENT = "viewMode/CONTENT" as const
 
 export const coverMode = () => ({type: COVER})
 export const contentMode = () => ({type: CONTENT})
 
-type ViewModeType =
+export type ActionType =
     | ReturnType<typeof coverMode>
     | ReturnType<typeof contentMode>
 
-interface ViewMode {mode: typeof COVER | typeof CONTENT}
+export interface View {
+    mode: typeof COVER | typeof CONTENT
+}
 
-const initialMode: ViewMode = {mode: COVER}
+const initialMode = {mode: COVER}
 
-const viewModeChanger = (state: ViewMode = initialMode, viewMode: ViewModeType) => {
-    switch (viewMode.type) {
-        case COVER: return {mode: typeof COVER}
-        case CONTENT: return {mode: typeof CONTENT}
-        default: return state
-    }
+const viewModeChanger = (state: View = initialMode, action: ActionType) => {
+    const {type: mode} = action
+    return {mode}
 }
 
 export default viewModeChanger

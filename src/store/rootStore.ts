@@ -1,9 +1,13 @@
 import {combineReducers} from "redux"
-import viewModeChanger from "./viewModeChanger";
+import view, {ActionType as ViewModeActionType, View} from "./viewModeChanger";
 
-const reducers = combineReducers({
-    viewModeChanger,
+export interface RootState {
+    view: View
+}
+
+export type RootAction = ViewModeActionType
+
+const rootReducer = combineReducers<RootState, RootAction>({
+    view,
 })
-
-export default reducers
-export type ReducerType = ReturnType<typeof reducers>
+export default rootReducer
