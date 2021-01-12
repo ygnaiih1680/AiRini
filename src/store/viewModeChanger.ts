@@ -1,5 +1,5 @@
-export const COVER = "viewMode/COVER" as const
-export const CONTENT = "viewMode/CONTENT" as const
+export const COVER = <const>"viewMode/COVER"
+export const CONTENT = <const>"viewMode/CONTENT"
 
 export const coverMode = () => ({type: COVER})
 export const contentMode = () => ({type: CONTENT})
@@ -16,7 +16,8 @@ const initialMode = {mode: COVER}
 
 const viewModeChanger = (state: View = initialMode, action: ActionType) => {
     const {type: mode} = action
-    return {mode}
+    if (mode === COVER || mode === CONTENT) return {mode}
+    else return state
 }
 
 export default viewModeChanger

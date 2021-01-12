@@ -3,19 +3,33 @@
 #search-engine {
     display: flex;
     width: 100%;
-    transition: all 1s linear;
+}
+
+#main.content:not(.fade-in) #search-engine,
+#main.cover.fade-in #search-engine {
+    grid-column-start: 1;
+    grid-row-start: 1;
 }
 
 #shadow {
     position: absolute;
-    top: 5.8rem;
     left: .4rem;
     height: 5rem;
-    width: calc(100% - .4rem);
-    /*background-color: var(--color-chrome);*/
     background-color: transparent;
     border: .2rem solid var(--color-illuminating);
     z-index: -1;
+}
+
+#main.cover:not(.fade-in) #shadow,
+#main.content.fade-in #shadow{
+    top: 5.8rem;
+    width: calc(100% - .4rem);
+}
+
+#main.content:not(.fade-in) #shadow,
+#main.cover.fade-in #shadow {
+    top: 0.4rem;
+    width: calc(85% - 1.4rem);
 }
 
 #icon-block {

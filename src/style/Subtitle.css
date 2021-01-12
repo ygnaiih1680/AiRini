@@ -13,6 +13,16 @@
     color: var(--color-illuminating);
 }
 
+#main.cover:not(.fade-in) #subtitle,
+#main.content.fade-in #subtitle{
+    display: block;
+}
+
+#main.content:not(.fade-in) #subtitle,
+#main.cover.fade-in #subtitle {
+    display: none;
+}
+
 .low-emphasis {
     color: var(--color-ultimate-gray);
     font-size: 0.8em;

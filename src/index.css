@@ -12,6 +12,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-size: 2vh;
     background-color: var(--color-blue-nights);
+    overflow: hidden;
 }
 
 code {
@@ -26,6 +27,6 @@ code {
     align-items: center;
 }
 
-#root.top {
-    align-items: flex-start;
+#root.content {
+    justify-content: flex-start;
 }

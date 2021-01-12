@@ -35,27 +35,24 @@ const OperationButton = ({type, icon}: ButtonProperties) => (
     </div>
 )
 
-class WindowOperationButtons extends Component<PropType, View> {
-    changeToCover
-    changeToContent
-
+class WindowOperationButtons extends Component<PropType> {
     constructor(props: PropType) {
         super(props);
-        console.log(props)
-        this.state = {mode: props.mode}
-        this.changeToCover = props.changeToCover
-        this.changeToContent = props.changeToContent
+        this.modeSwitcher = this.modeSwitcher.bind(this)
     }
 
     modeSwitcher() {
-        switch (this.state.mode) {
-            case COVER: break
+        const {mode, changeToCover, changeToContent} = this.props
+        switch (mode) {
+            case COVER: changeToContent(); break
+            case CONTENT: changeToCover(); break
+            default: break
         }
     }
 
     render() {
         return (
-            <div id="window-operation-button">
+            <div id="window-operation-button" onClick={this.modeSwitcher}>
                 {
                     Object.entries(buttons).map(([type, icon], idx) => (
                         <OperationButton key={idx} type={type} icon={icon}/>

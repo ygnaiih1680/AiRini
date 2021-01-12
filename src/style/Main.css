@@ -1,10 +1,40 @@
-#main.cover {
+#main {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    width: 75%;
     position: relative;
 }
 
-#main.content {
-    grid-template-columns: 75% 25%;
+#main.cover:not(.fade-in),
+#main.content.fade-in {
+    width: 75%;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#main.content:not(.fade-in),
+#main.cover.fade-in {
+    width: calc(100% - 2rem);
+    margin: 1rem 1rem 0;
+    grid-template-columns: calc(85% - 1rem) calc(15% - 1rem);
+}
+
+.fade-in {
+    animation: fade-in 450ms linear;
+}
+
+.fade-out {
+    animation: fade-out 450ms linear;
+}
+
+@keyframes fade-in {
+    90%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out {
+    0%, 10% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
 }

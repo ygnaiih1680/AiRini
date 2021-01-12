@@ -3,11 +3,64 @@ import WindowOperationButtons from "./WindowOperationButtons"
 import SearchEngine from "./SearchEngine"
 import Subtitle from "./Subtitle"
 import "../style/Main.css"
+import {RootState} from "../store/rootStore"
+import {connect} from "react-redux"
 
-class Main extends Component {
+const mapStateToProps = (state: RootState) => ({mode: state.view.mode})
+type PropType = ReturnType<typeof mapStateToProps>
+
+const FADE_IN = "fade-in" as const,
+    FADE_OUT = "fade-out" as const,
+    NONE = "none" as const,
+    COVER = "cover" as const,
+    CONTENT = "content" as const
+
+interface StateType {
+    fade: typeof FADE_IN
+        | typeof FADE_OUT
+        | typeof NONE
+}
+
+class Main extends Component<PropType, StateType> {
+    constructor(props: PropType) {
+        super(props);
+        Main.modeExtractor = Main.modeExtractor.bind(this)
+        Main.modeReverser = Main.modeReverser.bind(this)
+        this.state = {fade: NONE}
+    }
+
+    private static modeExtractor(origin: string) {
+        const result = origin.substring(9).toLowerCase()
+        if (result === COVER || result === CONTENT) return result
+        else return COVER
+    }
+
+    private static modeReverser(mode: typeof COVER | typeof CONTENT) {
+        switch (mode) {
+            case COVER:
+                return CONTENT
+            case CONTENT:
+            default:
+                return COVER
+        }
+    }
+
+    componentDidUpdate(prevProps: PropType) {
+        if (this.props.mode === prevProps.mode) return
+        const prevMode = Main.modeExtractor(prevProps.mode), nextMode = Main.modeReverser(prevMode)
+        window.setTimeout(() => {
+            document.querySelector("#root")?.classList.replace(prevMode, nextMode)
+            this.setState({fade: FADE_OUT})
+            window.setTimeout(() => {
+                this.setState({fade: NONE})
+            }, 450)
+        }, 450)
+        this.setState({fade: FADE_IN})
+    }
+
     render() {
         return (
-            <div id="main" className="cover">
+            <div id="main" className={`${Main.modeExtractor(this.props.mode)} ${this.state.fade}`}>
                 <WindowOperationButtons/>
                 <SearchEngine placeholder="WEB Developer AiRini"/>
                 <Subtitle/>
@@ -16,4 +69,4 @@ class Main extends Component {
     }
 }
 
-export default Main
+export default connect(mapStateToProps)(Main)
