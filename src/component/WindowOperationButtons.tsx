@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faWindowClose, faWindowMaximize, faWindowMinimize, IconDefinition} from "@fortawesome/free-regular-svg-icons"
 import "../style/WindowOperationButton.css"
 import {placidBlue} from "../color.json"
-import {coverMode, contentMode, ActionType as ViewModeActionType, View, CONTENT, COVER} from "../store/viewModeChanger"
+import {coverMode, contentMode, ActionType as ViewModeActionType, CONTENT, COVER} from "../store/viewModeChanger"
 import {RootState} from '../store/rootStore'
 import {Dispatch} from "redux"
 import {connect} from "react-redux"
@@ -44,15 +44,15 @@ class WindowOperationButtons extends Component<PropType> {
     modeSwitcher() {
         const {mode, changeToCover, changeToContent} = this.props
         switch (mode) {
-            case COVER: changeToContent(); break
-            case CONTENT: changeToCover(); break
+            case COVER: return changeToContent
+            case CONTENT: return changeToCover
             default: break
         }
     }
 
     render() {
         return (
-            <div id="window-operation-button" onClick={this.modeSwitcher}>
+            <div id="window-operation-button" onClick={this.modeSwitcher()}>
                 {
                     Object.entries(buttons).map(([type, icon], idx) => (
                         <OperationButton key={idx} type={type} icon={icon}/>

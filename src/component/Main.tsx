@@ -26,6 +26,7 @@ class Main extends Component<PropType, StateType> {
         super(props);
         Main.modeExtractor = Main.modeExtractor.bind(this)
         Main.modeReverser = Main.modeReverser.bind(this)
+        this.setFade = this.setFade.bind(this)
         this.state = {fade: NONE}
     }
 
@@ -45,17 +46,17 @@ class Main extends Component<PropType, StateType> {
         }
     }
 
+    private setFade(fade: typeof FADE_IN | typeof FADE_OUT | typeof NONE) {this.setState({fade})}
+
     componentDidUpdate(prevProps: PropType) {
         if (this.props.mode === prevProps.mode) return
         const prevMode = Main.modeExtractor(prevProps.mode), nextMode = Main.modeReverser(prevMode)
         window.setTimeout(() => {
             document.querySelector("#root")?.classList.replace(prevMode, nextMode)
-            this.setState({fade: FADE_OUT})
-            window.setTimeout(() => {
-                this.setState({fade: NONE})
-            }, 450)
+            this.setFade(FADE_OUT)
+            window.setTimeout(() => {this.setFade(NONE)}, 450)
         }, 450)
-        this.setState({fade: FADE_IN})
+        this.setFade(FADE_IN)
     }
 
     render() {

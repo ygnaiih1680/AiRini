@@ -17,21 +17,21 @@
 }
 
 .fade-in {
-    animation: fade-in 450ms linear;
+    animation: fade-in 450ms ease-out;
 }
 
 .fade-out {
-    animation: fade-out 450ms linear;
+    animation: fade-out 450ms ease-in;
 }
 
 @keyframes fade-in {
-    90%, 100% {
+    80%, 100% {
         opacity: 0;
     }
 }
 
 @keyframes fade-out {
-    0%, 10% {
+    0%, 20% {
         opacity: 0;
     }
     100% {
